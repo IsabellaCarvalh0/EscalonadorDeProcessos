@@ -3,9 +3,9 @@ import java.util.*;
 public class Fifo {
 
     private int[][] matriz;
-    private int tempoMedioDeEspera;
-    private int tempoMedioDeResposta;
-    private int turnaroundMedio;
+    private double tempoMedioDeEspera;
+    private double tempoMedioDeResposta;
+    private double turnaroundMedio;
 
     public Fifo(int quantidadeDeProcessos, int tempoDeExecucaoTotal, List<Processo> processos) {
         
@@ -73,11 +73,11 @@ public class Fifo {
             p.setTurnaround();
         }
         
-        int somaTempoDeEspera = 0;
-        int somaTempoDeResposta = 0;
-        int somaTurnaround = 0;
+        double somaTempoDeEspera = 0;
+        double somaTempoDeResposta = 0;
+        double somaTurnaround = 0;
 
-        for (processo : processos){
+        for (Processo processo : processos){
             somaTempoDeEspera += processo.getTempoDeEspera();
             somaTempoDeResposta += processo.getTempoDeResposta();
             somaTurnaround += processo.getTurnaround();
@@ -88,30 +88,15 @@ public class Fifo {
         turnaroundMedio = somaTurnaround / quantidadeDeProcessos;
     }
 
-    public int getTempoMedioDeEspera(){
+    public double getTempoMedioDeEspera(){
         return tempoMedioDeEspera;
     }
 
-    public String getTempoMedioDeEspera(){
-        String tempo = String.valueOf(tempoMedioDeEspera);
-        return tempo;
-    }
-
-    public int getTempoMedioDeResposta(){
+    public double getTempoMedioDeResposta(){
         return tempoMedioDeResposta;
     }
 
-    public String getTempoMedioDeResposta(){
-        String tempo = String.valueOf(tempoMedioDeResposta);
-        return tempo;
-    }
-
-    public int getTurnaroundMedio(){
+    public double getTurnaroundMedio(){
         return turnaroundMedio;
-    }
-    
-    public String getTurnaroundMedio(){
-        String tempo = String.valueOf(turnaroundMedio);
-        return tempo;
-    }
+    }   
 }
