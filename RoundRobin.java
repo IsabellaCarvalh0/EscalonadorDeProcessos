@@ -64,6 +64,29 @@ public class RoundRobin{
                     matriz[k][j] = 2; // esperando
                 }
             }
+            // ------------------------ANALISANDO A TABELA----------------------------------
+            for (int i=0; i<matriz.length; i++){
+                Processo p = processos.get(i);
+                int indiceInicio = -1;
+
+                // Para verificar tempo total de espera:
+                for (int j = 0; j< matriz[0].length; j++){
+                    if(matriz[i][j] == 2){ // esperando
+                        p.aumentarTempoDeEspera();
+                    }
+                }
+
+                // Para verificar tempo de resposta: 
+                for (int k = 0; k < matriz[0].length; k++){
+                    if (matriz[i][k] == 1){
+                        indiceInicio = k;
+                        break;
+                    }
+                }
+
+                p.setTempoDeResposta((indiceInicio - p.getMomentoDeChegada()));
+                p.setTurnaround();
+            }
         }
         double somaTempoDeEspera = 0;
         double somaTempoDeResposta = 0;
