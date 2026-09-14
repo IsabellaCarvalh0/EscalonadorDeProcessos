@@ -62,4 +62,13 @@ public class Processo {
     public void aumentarTempoDeResposta(){
         tempoDeResposta+=1;
     }
+
+    public Processo(Processo original){
+        this.tempoDeExecucao = original.tempoDeExecucao;
+        this.momentoDeChegada = original.momentoDeChegada;
+        this.restingTime = original.tempoDeExecucao; // reseta para o valor original
+        this.tempoDeEspera = 0;
+        this.tempoDeResposta = 0;
+        this.turnaround = 0;
+    }
 }
